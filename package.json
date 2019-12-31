@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "watch 'npm run build' src",
-    "build": "babel src -d compiled --watch",
+    "build": "babel . --watch --out-dir compiled --presets=react --ignore=node_modules,compiled --source-maps inline",
     "test": "live-server --open=./SpecRunner.html --port=8081",
     "start": "live-server --open=./index.html --port=8082",
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
