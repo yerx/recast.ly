@@ -1,14 +1,20 @@
-import VideoListEntry from './videoListEntry.js';
+import VideoListEntry from './VideoListEntry.js';
 
-class VideoList extends React.Component {
-  render() {
-    return (
-      <div className="video-list">
-        {this.props.videos.map(obj => <VideoListEntry video={obj} />)};
-      </div>
-    );
-  }
-}
+var VideoList = (props) => (
+  <div className="video-list">
+    {props.videos.map(obj => <VideoListEntry video={obj} key={obj.etag} />)};
+  </div>
+);
+
+// class VideoList extends React.Component {
+//   render() {
+//     return (
+//       <div className="video-list">
+//         {this.props.videos.map(obj => <VideoListEntry video={obj} key={obj.etag} />)};
+//       </div>
+//     );
+//   }
+// }
 
 
 VideoList.propTypes = {
