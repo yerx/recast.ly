@@ -2,8 +2,6 @@
 import Seach from './Search.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
-// import exampleVideoData from '../data/exampleVideoData.js';
-// import searchYouTube from '../lib/searchYouTube.js';
 
 class App extends React.Component {
 

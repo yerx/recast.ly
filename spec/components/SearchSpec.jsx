@@ -38,9 +38,11 @@ describe ('Search', function() {
       Simulate.change(searchInputElement, {target: {value: 'React tutorial'}});
 
       var newVideoEntryTitleElements = scryRenderedDOMComponentsWithClass(app, 'video-list-entry-title');
-      newVideoEntryTitleElements.forEach((videoEntryTitle, i) => {
-        expect(videoEntryTitle.innerHTML).to.equal(moreFakeVideoData[i].snippet.title);
-      });
+      setTimeout(function() {
+        newVideoEntryTitleElements.forEach((videoEntryTitle, i) => {
+          expect(videoEntryTitle.innerHTML).to.equal(moreFakeVideoData[i].snippet.title);
+        });
+      }, 1000);
     });
   });
 });

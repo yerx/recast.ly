@@ -6,11 +6,16 @@ class Search extends React.Component {
     };
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.debounced = _.debounce(this.debounceSearch, 500);
   }
 
   handleInputChange(e) {
     this.setState({search: e.target.value});
-    this.props.handleSearch(e.target.value)
+    this.debounced(e.target.value);
+  }
+
+  debounceSearch(val) {
+    this.props.handleSearch(val);
   }
 
   handleSubmitButton(e) {
