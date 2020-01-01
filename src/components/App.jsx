@@ -2,9 +2,8 @@
 import Seach from './Search.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
-import exampleVideoData from '../data/exampleVideoData.js';
+// import exampleVideoData from '../data/exampleVideoData.js';
 // import searchYouTube from '../lib/searchYouTube.js';
-import YOUTUBE_API_KEY from '../config/youtube.js';
 
 class App extends React.Component {
 
@@ -12,23 +11,21 @@ class App extends React.Component {
     super(props);
     this.state = {
       video: null,
-      videos: [],
-      search: ''
+      videos: []
     };
 
     this.changeVideo = this.changeVideo.bind(this);
-    this.updateSearch = this.updateSearch.bind(this);
     this.APIcallback = this.APIcallback.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.search = this.search.bind(this);
   }
 
   componentDidMount() {
-    this.init('SNL');
+    this.search('SNL');
   }
 
-  init(query) {
+  search(query) {
     let options = {
-      key: YOUTUBE_API_KEY,
+      key: this.props.YOUTUBE_API_KEY,
       query: query,
       max: 5
     };
@@ -48,20 +45,12 @@ class App extends React.Component {
     this.setState({video: obj});
   }
 
-  updateSearch(str) {
-    this.setState({search: str});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
   render() {
     return(
         <div>
           <nav className="navbar">
             <div className="col-md-6 offset-md-3">
-              <Seach search={this.state.search} updateSearch={this.updateSearch} handleSubmit={this.handleSubmit} handleAPI={this.APIcallback} />
+              <Seach handleAPI={this.APIcallback} handleSearch={this.search} />
             </div>
           </nav>
           <div className="row">
