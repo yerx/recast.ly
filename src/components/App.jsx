@@ -25,7 +25,7 @@ class App extends React.Component {
 
   search(query) {
     let options = {
-      key: this.props.YOUTUBE_API_KEY,
+      key: this.props.API_KEY,
       query: query,
       max: 5
     };
