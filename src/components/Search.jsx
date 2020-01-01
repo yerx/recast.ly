@@ -1,12 +1,20 @@
 import searchYouTube from '../lib/searchYouTube.js';
+import YOUTUBE_API_KEY from '../config/youtube.js';
+// import APIcallback from './App.js';
 
 
 function Search(props) {
   function handleSearch(e) {
-    console.log(e);
     props.updateSearch(e.target.value);
-    searchYouTube(e.target.value, );
+
+    let options = {
+      key: YOUTUBE_API_KEY,
+      query: e.target.value,
+      max: 5
+    };
+    searchYouTube(options, props.handleAPI);// callback = setState for videos
   }
+
 
   function handleSubmitButton(e) {
     props.handleSubmit(e);

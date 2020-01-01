@@ -81,7 +81,7 @@ describe('searchYouTube', function() {
     xhr.restore();
 
     searchYouTube(options, (data) => {
-      expect(hasSameShape(data, exampleVideoData)).to.be.true;
+      expect(hasSameShape(data.items, exampleVideoData)).to.be.true;
       done();
     });
   });
