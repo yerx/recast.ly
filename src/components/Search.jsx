@@ -4,15 +4,20 @@ import YOUTUBE_API_KEY from '../config/youtube.js';
 
 
 function Search(props) {
+
   function handleSearch(e) {
     props.updateSearch(e.target.value);
 
-    let options = {
-      key: YOUTUBE_API_KEY,
-      query: e.target.value,
-      max: 5
-    };
-    searchYouTube(options, props.handleAPI);// callback = setState for videos
+    let debounced = _.debounce(function() {
+      let options = {
+        key: YOUTUBE_API_KEY,
+        query: e.target.value,
+        max: 5
+      };
+      searchYouTube(options, props.handleAPI);
+    }, 500, {'leading': true, 'trailing': true});
+    debounced();
+
   }
 
 
